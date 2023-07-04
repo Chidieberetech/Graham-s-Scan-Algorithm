@@ -67,7 +67,7 @@ def merge(left, right, key):
         right_index += 1
     return merged
 
-
+#   Computing the polar angle of a point with respect to p0.
 def polar_angle(point, key):
     """
     Computing the polar angle of a point with respect to p0.
