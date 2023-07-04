@@ -86,16 +86,16 @@ def graham_scan_algorithm(points):
     list: Convex hull points in counterclockwise order.
     """
 
-    # Finding the lowest point  in the set  of points   (lowest y-coordinate)
+    # Finding the lowest point in the list (lowest y-coordinate)    (p0)    (lowest_point)
     lowest_point = min(points, key=lambda point: (point[1], point[0]))
 
-    # Sorting the points based on their polar angles with respect to the lowest point
+    ##  Sorting the points based on their polar angles with respect to p0   (lowest_point)
     sorted_points = sorted(points, key=lambda point: polar_angle(point, lowest_point))
 
-    # Initializing the stack with the lowest point
+    # Creating a stack and pushing the first two points onto the stack  (lowest_point, sorted_points[1])
     stack = [lowest_point, sorted_points[1]]
 
-    # Iterating over the remaining points
+    # Iterating over the remaining points in the list and pushing them onto the stack   (sorted_points[2:])
     for point in sorted_points[2:]:
         while len(stack) > 1 and is_clockwise(stack[-2], stack[-1], point):
             stack.pop()
@@ -104,7 +104,7 @@ def graham_scan_algorithm(points):
     # Returning the stack
     return stack
 
-
+#       Checking if the points p1, p2, and p3 form a clockwise turn.
 def is_clockwise(p1, p2, p3):
     """
     Checks if the points p1, p2, and p3 form a clockwise turn.
@@ -121,7 +121,7 @@ def is_clockwise(p1, p2, p3):
     return (p2[1] - p1[1]) * (p3[0] - p2[0]) > (p2[0] - p1[0]) * (p3[1] - p2[1])
 
 
-# Example usage
+# List of points    (points)    and origin point    (p0)    (0, 0)
 points = [(1, 2), (-3, 4), (5, 6), (7, 8), (9, 10)]
 p0 = (0, 0)
 
