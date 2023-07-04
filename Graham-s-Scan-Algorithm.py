@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import math
 
+# Graham's Scan Algorithm   for   Convex Hull Assignment.
 
 def merge_sort(points, key='p0'):
     """
@@ -10,11 +11,11 @@ def merge_sort(points, key='p0'):
     Returns:list: Sorted list of points.
     """
 
-    # Base case: If the list has 0 or 1 element, it is already sorted
+    # Base case: If the list contains only one point, return the list   (it is already sorted)
     if len(points) <= 1:
         return points
 
-    # Divide the list into two portions
+    # Finding the middle point in the list  (the pivot) and dividing the list into two halves
     mid = len(points) // 2
     left_half = points[:mid]
     right_half = points[mid:]
@@ -23,7 +24,7 @@ def merge_sort(points, key='p0'):
     left_sorted = merge_sort(left_half, key)
     right_sorted = merge_sort(right_half, key)
 
-    # Merging the sorted portions
+    #
     return merge(left_sorted, right_sorted, key)
 
 
@@ -100,7 +101,7 @@ def graham_scan_algorithm(points):
             stack.pop()
 
         stack.append(point)
-    #
+    # Returning the stack
     return stack
 
 
@@ -128,7 +129,7 @@ p0 = (0, 0)
 sorted_points = merge_sort(points, p0)
 
 # Compute the convex hull using Graham's Scan algorithm
-convex_hull = graham_scan(sorted_points)
+convex_hull = graham_scan_algorithm(sorted_points)
 
 # Extract the x and y coordinates of the sorted points and convex hull points
 x_sorted = [point[0] for point in sorted_points]
