@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import math
+
+
 def merge_sort(points, key='p0'):
     """
     Sorts a list of points based on their polar angle with respect to p0.
@@ -23,6 +25,7 @@ def merge_sort(points, key='p0'):
 
     # Merging the sorted portions
     return merge(left_sorted, right_sorted, key)
+
 
 def merge(left, right, key):
     """
@@ -63,6 +66,7 @@ def merge(left, right, key):
         right_index += 1
     return merged
 
+
 def polar_angle(point, key):
     """
     Computing the polar angle of a point with respect to p0.
@@ -70,6 +74,7 @@ def polar_angle(point, key):
     dx = point[0] - key[0]
     dy = point[1] - key[1]
     return math.atan2(dy, dx)
+
 
 def graham_scan_algorithm(points):
     """
@@ -80,23 +85,24 @@ def graham_scan_algorithm(points):
     list: Convex hull points in counterclockwise order.
     """
 
-    # Locating the point with the lowest y-coordinate (smallest y, ties broken by smallest x)
+    # Finding the lowest point  in the set  of points   (lowest y-coordinate)
     lowest_point = min(points, key=lambda point: (point[1], point[0]))
 
-    # Sorting the points by their polar angles with respect to the lowest point
+    # Sorting the points based on their polar angles with respect to the lowest point
     sorted_points = sorted(points, key=lambda point: polar_angle(point, lowest_point))
 
-    # Initializing the stack with the lowest and second-lowest points
+    # Initializing the stack with the lowest point
     stack = [lowest_point, sorted_points[1]]
 
-    # Iteration over the remaining sorted points
+    # Iterating over the remaining points
     for point in sorted_points[2:]:
         while len(stack) > 1 and is_clockwise(stack[-2], stack[-1], point):
             stack.pop()
 
         stack.append(point)
-#Returning the stack
+    #
     return stack
+
 
 def is_clockwise(p1, p2, p3):
     """
@@ -112,6 +118,7 @@ def is_clockwise(p1, p2, p3):
     """
 
     return (p2[1] - p1[1]) * (p3[0] - p2[0]) > (p2[0] - p1[0]) * (p3[1] - p2[1])
+
 
 # Example usage
 points = [(1, 2), (-3, 4), (5, 6), (7, 8), (9, 10)]
