@@ -73,17 +73,17 @@ def polar_angle(point, key):
 
 def graham_scan_algorithm(points):
     """
-    Computes the convex hull of a set of points using Graham's Scan algorithm.
+    Computing the convex hull of a set of points using Graham's Scan algorithm.
     Args:
     points (list): List of points.
     Returns:
     list: Convex hull points in counterclockwise order.
     """
 
-    # Find the point with the lowest y-coordinate (smallest y, ties broken by smallest x)
+    # Locating the point with the lowest y-coordinate (smallest y, ties broken by smallest x)
     lowest_point = min(points, key=lambda point: (point[1], point[0]))
 
-    # Sort the points by their polar angles with respect to the lowest point
+    # Sorting the points by their polar angles with respect to the lowest point
     sorted_points = sorted(points, key=lambda point: polar_angle(point, lowest_point))
 
     # Initialize the stack with the lowest and second-lowest points
