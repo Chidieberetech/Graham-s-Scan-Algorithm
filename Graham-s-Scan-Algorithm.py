@@ -146,3 +146,6 @@ plt.title('Convex Hull')
 plt.legend()
 plt.grid(True)
 plt.show()
+
+
+# Thank you for teaching us Algorithm and Data Structure, Professor!
