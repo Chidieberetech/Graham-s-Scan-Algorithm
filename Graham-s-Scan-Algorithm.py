@@ -86,16 +86,16 @@ def graham_scan_algorithm(points):
     # Sorting the points by their polar angles with respect to the lowest point
     sorted_points = sorted(points, key=lambda point: polar_angle(point, lowest_point))
 
-    # Initialize the stack with the lowest and second-lowest points
+    # Initializing the stack with the lowest and second-lowest points
     stack = [lowest_point, sorted_points[1]]
 
-    # Iterate over the remaining sorted points
+    # Iteration over the remaining sorted points
     for point in sorted_points[2:]:
         while len(stack) > 1 and is_clockwise(stack[-2], stack[-1], point):
             stack.pop()
 
         stack.append(point)
-
+#Returning the stack
     return stack
 
 def is_clockwise(p1, p2, p3):
