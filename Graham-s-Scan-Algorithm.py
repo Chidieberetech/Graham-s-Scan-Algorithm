@@ -138,8 +138,8 @@ x_hull = [point[0] for point in convex_hull]
 y_hull = [point[1] for point in convex_hull]
 
 # Plotting the points and the convex hull   (x_sorted, y_sorted)    using matplotlib    (plt)   (pyplot)
-plt.scatter(x_sorted, y_sorted, c='blue', label='Sorted Points')
-plt.scatter(x_hull, y_hull, c='red', label='Convex Hull')
+plt.scatter(x_sorted, y_sorted, c='red', label='Sorted Points')
+plt.scatter(x_hull, y_hull, c='blue', label='Convex Hull')
 plt.xlabel('X')
 plt.ylabel('Y')
 plt.title('Convex Hull')
