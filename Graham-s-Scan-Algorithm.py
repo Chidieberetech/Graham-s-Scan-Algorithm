@@ -122,7 +122,7 @@ def is_clockwise(p1, p2, p3):
 
 
 # List of points    (points)    and origin point    (p0)    (0, 0)
-points = [(1, 2), (-3, 4), (5, 6), (7, 8), (9, 10)]
+points = [(1, 2), (3, 4), (5, 7), (8.5, 9), (11, 15)]
 p0 = (0, 0)
 
 # Sorting the points based on their polar angles with respect to p0   (lowest_point)
