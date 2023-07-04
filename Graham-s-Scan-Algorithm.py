@@ -89,7 +89,7 @@ def graham_scan_algorithm(points):
     # Finding the lowest point in the list (lowest y-coordinate)    (p0)    (lowest_point)
     lowest_point = min(points, key=lambda point: (point[1], point[0]))
 
-    ##  Sorting the points based on their polar angles with respect to p0   (lowest_point)
+    # Sorting the points based on their polar angles with respect to p0   (lowest_point)
     sorted_points = sorted(points, key=lambda point: polar_angle(point, lowest_point))
 
     # Creating a stack and pushing the first two points onto the stack  (lowest_point, sorted_points[1])
@@ -125,19 +125,19 @@ def is_clockwise(p1, p2, p3):
 points = [(1, 2), (-3, 4), (5, 6), (7, 8), (9, 10)]
 p0 = (0, 0)
 
-# Sort the points based on their polar angles with respect to p0
+# Sorting the points based on their polar angles with respect to p0   (lowest_point)
 sorted_points = merge_sort(points, p0)
 
-# Compute the convex hull using Graham's Scan algorithm
+# Computing the convex hull using Graham's Scan algorithm
 convex_hull = graham_scan_algorithm(sorted_points)
 
-# Extract the x and y coordinates of the sorted points and convex hull points
+#   Printing the convex hull    (convex_hull)       (x_hull, y_hull)    (x_sorted, y_sorted)    (sorted_points)
 x_sorted = [point[0] for point in sorted_points]
 y_sorted = [point[1] for point in sorted_points]
 x_hull = [point[0] for point in convex_hull]
 y_hull = [point[1] for point in convex_hull]
 
-# Plot the sorted points and the convex hull
+# Plotting the points and the convex hull   (x_sorted, y_sorted)    using matplotlib    (plt)   (pyplot)
 plt.scatter(x_sorted, y_sorted, c='blue', label='Sorted Points')
 plt.scatter(x_hull, y_hull, c='red', label='Convex Hull')
 plt.xlabel('X')
